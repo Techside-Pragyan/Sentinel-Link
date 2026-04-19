@@ -19,14 +19,19 @@ def train_model():
         df = pd.read_csv(dataset_url)
     except Exception as e:
         print(f"Error downloading dataset: {e}")
-        # Fallback to creating a very small synthetic dataset for demo purposes if download fails
-        print("Creating synthetic dataset for demo...")
+        # Fallback to creating a larger synthetic dataset for demo purposes
+        print("Creating robust synthetic dataset for demo...")
         data = {
             'url': [
-                'https://www.google.com', 'https://www.facebook.com', 'https://www.microsoft.com',
-                'http://secure-login-bank.com', 'http://update-your-account.xyz', 'http://paypal-security-check.info'
+                'https://www.google.com', 'https://www.facebook.com', 'https://www.microsoft.com', 'https://www.apple.com',
+                'https://www.amazon.com', 'https://www.netflix.com', 'https://www.github.com', 'https://www.linkedin.com',
+                'https://www.wikipedia.org', 'https://www.reddit.com', 'https://www.twitter.com', 'https://www.instagram.com',
+                'http://secure-login-bank.com/verify-account', 'http://update-your-bank-info.xyz/login', 'http://paypal-security-check.info/auth',
+                'http://login-microsoft-office365.icu', 'http://amazon-gift-card-win.top', 'http://netflix-billing-update.cam',
+                'http://192.168.1.1/login.php', 'http://bit.ly/fake-link-123', 'http://tinyurl.com/secure-auth-now',
+                'http://account-verification-required-now.biz', 'http://ebay-signin-confirm.net', 'http://secure-entry-portal.info'
             ],
-            'label': [0, 0, 0, 1, 1, 1]
+            'label': [0] * 12 + [1] * 12
         }
         df = pd.DataFrame(data)
 
